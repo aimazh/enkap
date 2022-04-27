@@ -1,0 +1,32 @@
+.footer {
+  color: var(--sub-color);
+  padding: var(--padding);
+  border-top: 1px solid var(--sub-alt-color);
+
+  a {
+    color: var(--sub-color);
+  }
+
+  a:hover {
+    color: var(--text-color);
+  }
+
+  &>.items {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap);
+
+    &>.item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--gap-s);
+
+      &>* {}
+    }
+
+    &>.item.fill {
+      flex: 1;
+    }
+  }
+}

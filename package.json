@@ -11,7 +11,10 @@
     "react": "^18.0.0",
     "react-browser-extension-scripts": "4.0.10",
     "react-dom": "^18.0.0",
+    "react-redux": "^8.0.1",
     "react-tooltip": "^4.2.21",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -41,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "sass": "^1.51.0"
   }
 }

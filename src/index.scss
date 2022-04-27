@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@200;300;400;500;700&family=Roboto+Mono:wght@200;300;400;500;700&family=Vazirmatn:wght@200;300;400;500;700&display=swap');
+
+:root {
+  --font: "Roboto Mono", "Vazirmatn";
+  --font-title: "Lexend Deca";
+
+  --padding: 0.75rem;
+  --gap: 0.75rem;
+  --gap-s: 0.30rem;
+  --border-radius: 3px;
+
+  --bg-color: #2d394d;
+  --main-color: #ff7a90;
+  --caret-color: #ff7a90;
+  --sub-color: #4a768d;
+  --sub-alt-color: #263041;
+  --text-color: #fffaf8;
+  --error-color: #ee2a3a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+.app {
+  width: 400px;
+  height: 600px;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--main-color);
+  text-decoration: none;
+  transition: color 0.16s;
+}
+
+a:hover {
+  color: var(--text-color) !important;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  &:not(:last-child) {
+    margin-bottom: var(--padding);
+  }
+
+  &>.title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font-title);
+    color: var(--text-color);
+    margin-bottom: var(--gap);
+
+    &>.details {
+      font-size: 0.6rem;
+    }
+  }
+
+  &>.inputs {
+    display: flex;
+    flex-direction: column;
+
+    &>.input {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &:not(:last-child) {
+        margin-bottom: var(--gap);
+      }
+
+      &>input,
+      &>select {
+        flex: 1;
+        background-color: rgba(black, 0.16);
+        color: var(--text-color);
+        font-family: var(--font);
+        font-size: 12px;
+        padding-left: 32px;
+        padding-right: 8px;
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 32px;
+        border-radius: var(--border-radius);
+      }
+
+      & > input::-webkit-input-placeholder {
+        color: var(--sub-color);
+      }
+      
+      & > input::-moz-placeholder {
+        color: var(--sub-color);
+      }
+      
+      & > input::-ms-placeholder {
+        color: var(--sub-color);
+      }
+      
+      & > input::placeholder {
+        color: var(--sub-color);
+      }
+
+      &>.icon {
+        position: absolute;
+        top: 16px;
+        left: 8px;
+        color: var(--sub-color);
+      }
+    }
+  }
+}

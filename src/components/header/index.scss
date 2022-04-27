@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  padding: var(--padding);
+
+  &>.title {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font-title);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  &>.subtitle {
+    color: var(--sub-color);
+  }
+
+  &>.actions {
+    position: absolute;
+    top: var(--padding);
+    right: var(--padding);
+    display: flex;
+    flex-direction: row;
+
+    &>.action {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--gap-s);
+    }
+  }
+}
