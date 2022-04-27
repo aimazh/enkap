@@ -1,0 +1,20 @@
+.settings {
+  padding: var(--padding);
+  padding-top: 0;
+  border-bottom: 1px solid var(--sub-alt-color);
+
+  &>.toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-s);
+  }
+
+  &>.content {
+    margin-top: var(--padding);
+  }
+
+  &>.content.hidden {
+    display: none;
+  }
+}
