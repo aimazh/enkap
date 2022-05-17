@@ -1,9 +1,14 @@
 import React from 'react';
+import { useStore } from 'react-redux';
+import { loadData } from '../../redux';
 import './index.scss';
 
 export const Header = () => {
+  const store = useStore();
+
   const handleRefresh = (e) => {
     e.preventDefault();
+    store.dispatch(loadData());
   };
 
   return (

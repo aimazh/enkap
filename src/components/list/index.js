@@ -1,19 +1,38 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './index.scss';
 
 export const List = () => {
-  const [loading, setLoading] = React.useState(false);
+  const data = useSelector(state => state.app.data);
+  const loading = useSelector(state => state.app.loading);
+
   const [filter, setFilter] = React.useState('');
 
-  const filteredData = JSON.parse(localStorage.getItem('NOTION_DATA'));
 
   const handleChangeFilter = (e) => {
     e.preventDefault();
+    setFilter(e.target.value);
   };
 
   const handleCopy = (item) => (e) => {
     e.preventDefault();
+
+    navigator.clipboard.writeText(item.secret);
+
+    const span = document.getElementById(`copy-${item.id}`);
+    if (span) {
+      span.innerHTML = 'Copied';
+      setTimeout(() => {
+        span.innerHTML = 'Copy';
+      }, 1000);
+    }
   };
+
+  const handleFilter = (item) => {
+    return item.service.toLocaleLowerCase().indexOf(filter.toLocaleLowerCase()) > -1;
+  }
+
+  const filteredData = data.filter(handleFilter);
 
   return (
     <div className='list'>

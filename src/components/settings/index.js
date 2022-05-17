@@ -1,25 +1,35 @@
 import React from 'react';
+import { useSelector, useStore } from 'react-redux';
+import { toggleSettings, changeTheme } from '../../redux';
 import './index.scss';
 
 export const Settings = () => {
-  const [shown, setShown] = React.useState(false);
+  const store = useStore();
+  const currentTheme = useSelector(state => state.app.currentTheme);
+  const themes = useSelector(state => state.app.themes);
+  const counter = useSelector(state => state.app.counter);
+  const settingsOpen = useSelector(state => state.app.settingsOpen);
 
   const handleShowHide = (e) => {
     e.preventDefault();
-    setShown(!shown);
+    store.dispatch(toggleSettings());
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
+  const handleThemeChange = (e) => {
+    store.dispatch(changeTheme(e.target.value));
+  };
+
   return (
     <div className='settings'>
       <a className='toggle' href='/' onClick={handleShowHide}>
-        <i className={'fas fa-' + (shown ? 'minus' : 'plus')} />
-        <span>{shown ? 'hide' : 'show'} settings</span>
+        <i className={'fas fa-' + (settingsOpen ? 'minus' : 'plus')} />
+        <span>{settingsOpen ? 'hide' : 'show'} settings ({counter})</span>
       </a>
-      <div className={'content' + (shown ? '' : ' hidden')}>
+      <div className={'content' + (settingsOpen ? '' : ' hidden')}>
         <div className='form'>
           <div className='title'>
             <span>theme </span>
@@ -30,10 +40,10 @@ export const Settings = () => {
           <div className='inputs'>
             <div className='input select'>
               <i className='fas fa-palette fa-lg icon' />
-              <select>
-                <option>theme a</option>
-                <option>theme b</option>
-                <option>theme c</option>
+              <select value={currentTheme} onChange={handleThemeChange}>
+                {themes.map(theme => (
+                  <option key={theme} value={theme}>{theme}</option>
+                ))}
               </select>
             </div>
           </div>

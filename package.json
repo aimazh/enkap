@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@notionhq/client": "^1.0.4",
+    "@reduxjs/toolkit": "^1.8.1",
     "@reonomy/react-confetti-explosion": "^1.0.32",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.2.7",
@@ -14,7 +15,6 @@
     "react-redux": "^8.0.1",
     "react-tooltip": "^4.2.21",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
