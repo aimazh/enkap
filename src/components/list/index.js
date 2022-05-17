@@ -5,6 +5,7 @@ import './index.scss';
 export const List = () => {
   const data = useSelector(state => state.app.data);
   const loading = useSelector(state => state.app.loading);
+  const apiError = useSelector(state => state.app.apiError);
 
   const [filter, setFilter] = React.useState('');
 
@@ -46,6 +47,12 @@ export const List = () => {
           </div>
         </div>
       </div>
+      {apiError && (
+        <div className='error'>
+          <i className='fas fa-triangle-exclamation fa-xl' />
+          <span>{apiError}</span>
+        </div>
+      )}
       {loading && (
         <div className='loading'>
           <i className='fas fa-fan fa-xl spinner' />

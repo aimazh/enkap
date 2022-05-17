@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useStore } from 'react-redux';
-import { toggleSettings, changeTheme } from '../../redux';
+import { toggleSettings, changeTheme, updateAPIValues } from '../../redux';
 import './index.scss';
 
 export const Settings = () => {
@@ -9,14 +9,20 @@ export const Settings = () => {
   const themes = useSelector(state => state.app.themes);
   const counter = useSelector(state => state.app.counter);
   const settingsOpen = useSelector(state => state.app.settingsOpen);
+  const _key = useSelector(state => state.app.api.key);
+  const _db = useSelector(state => state.app.api.db);
+
+  const [key, setKey] = React.useState(_key || '');
+  const [db, setDB] = React.useState(_db || '');
 
   const handleShowHide = (e) => {
     e.preventDefault();
     store.dispatch(toggleSettings());
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    store.dispatch(updateAPIValues(key, db));
   };
 
   const handleThemeChange = (e) => {
@@ -58,11 +64,11 @@ export const Settings = () => {
           <div className='inputs'>
             <div className='input text'>
               <i className='fas fa-key fa-lg icon' />
-              <input placeholder='secret key' />
+              <input value={key} onChange={e => setKey(e.target.value)} placeholder='secret key' />
             </div>
             <div className='input text'>
               <i className='fas fa-database fa-lg icon' />
-              <input placeholder='database id' />
+              <input value={db} onChange={e => setDB(e.target.value)} placeholder='database id' />
             </div>
             <button type='input button'>
               <i className='fas fa-check' />

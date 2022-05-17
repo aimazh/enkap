@@ -29,6 +29,17 @@
     }
   }
 
+  &>.error {
+    padding: 0.5rem;
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--error-extra-color);
+  }
+
   &>.loading {
     min-height: 40px;
     display: flex;
